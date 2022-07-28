@@ -1,11 +1,11 @@
-﻿#Dead Drop Hacking With Microcontrollers (Proof of Concept)
+﻿#Dead Drop Attacks With Microcontrollers (Proof of Concept)
 
 ##TLDR:
 Walk into wifi range of your home network with a battery powered microcontroller in your pocket. This code flashed on it will run automatically and spawn reverse shells from vulnerable hosts on the network, connecting back to your command and control server.
 
 ##What:
 This project is proof of concept for turning microcontrollers into automated pentesting devices.
-I call this type of pentesting "dead drop hacking".
+I refer to this type of attack as a "dead drop attack".
 This PoC performs a pentest on an entire target network for an authenticated Wing FTP Server remote command execution vulnerability. The python3 version of the exploit used in this PoC can be found here:
 https://github.com/notcos/Wing-FTP-RCE
 The code in this project is capable of spawning reverse shells on multiple different hosts in a short period of time.
@@ -34,11 +34,11 @@ This is a simple proof of concept. It can be expanded upon greatly. There are pl
 
 If the target network is password protected, a malicious actor could program the microcontoller to perform a PMKID wifi attack in order to get a wifi password hash. These microcontrollers are not built for intensive wifi password cracking. This issue could be resolved by adding a LoRa module to the microcontroller. LoRa is a relatively new radio communication protocol that consumes very little power and can transfer data 12 kilometers away. One could radio the wifi password hash to a command and control server, crack the hash, then radio the wifi network's cracked password back to the microcontroller. This could potentially allow the microcontroller to connect to any wifi network it encounters.
 
-While the code in the proof of concept does perform a conditional brute force attack against a login panel, a malicious actor could also utilize the same LoRa technology to perform brute force password attacks on various parts of the network that require larger lists. A microcontoller may only possess 16mb of flash memory, but nothing is stopping someone from piping over 16gb of passwords/usernames in chunks via LoRa.
+While the code in the proof of concept does perform a conditional brute force attack against a login panel, a malicious actor could also utilize the same LoRa technology to perform brute force attacks on various parts of the network that require larger lists. A microcontoller may only possess 16mb of flash memory, but nothing is stopping someone from piping over 16gb of passwords/usernames in chunks via LoRa.
 
 Another interesting addition would be to add a GPS module to the microcontroller. This would enable geofencing. One could program the microcontroller to run in a low power mode until it comes close enough to a designated area. After arriving at a set of designated coordinates it could then wake from sleep and start running recon code.
 
-These microcontrollers can also be programmed to be difficult or impossible to reverse engineer, even with phsyical access to the device. They can be programmed to wipe their own memory if they are tampered with or if a battery/time threshold have been met.
+These microcontrollers can also be programmed to be difficult or impossible to reverse engineer, even with phsyical access to the device. They can be programmed to wipe their own memory if they are tampered with or if a battery/time threshold has been met.
 
 ##Risk Reduction:
 Segregating sensitive parts of your network from your wifi network would be advisable. MAC addresses for microcontrollers from major manufacturers are publicly available. Networks that consider this type of attack a risk should create alerts anytime these MAC addresses are seen connecting to their network. This is not a reliable method of detection, as MAC addresses can be altered, but it is a start. A more effective risk reduction method would be to protect your wifi network with a very long and complex wifi password, or employ other methods of user verification.
