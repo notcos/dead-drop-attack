@@ -1,5 +1,7 @@
 # Dead Drop Attacks With Microcontrollers (Proof of Concept)
 
+![alt text](https://github.com/notcos/notcos.github.io/blob/master/mcu.png)
+
 ## TLDR:
 Walk into wifi range of your home network with a battery powered microcontroller in your pocket. This code flashed on it will run automatically and spawn reverse shells from vulnerable hosts on the network, connecting back to your command and control server.
 
